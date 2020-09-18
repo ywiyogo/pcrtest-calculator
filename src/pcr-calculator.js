@@ -30,6 +30,7 @@ app.component('pcr-comp', {
             this.test_falsenegative = Number(this.real_positive) - Number(this.test_positive);
             this.test_falsepositive = Number(this.real_negative) - Number(this.test_negative);
             this.total_testpositive = this.test_positive + this.test_falsepositive;
+            this.total_testnegative = this.test_negative + this.test_falsenegative;
             this.falsepositive_rate = (this.test_falsepositive / this.total_testpositive);
             this.falsenegative_rate = (this.test_falsenegative / this.total_testnegative);
             this.ppv = (this.test_positive / this.total_testpositive);
