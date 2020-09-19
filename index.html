@@ -13,32 +13,37 @@
     <!-- <script type = "text/javascript" src = "js/vue.js"></script> -->
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
-    <title>Interactive Covid Graphs</title>
+    <title>PCR Test Simulator</title>
 </head>
 
 <body>
     <div id="pcr_calc">
         <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <h1 class="navbar-brand text-white" href="#">PCR Test Calculator</h1>
+            <h1 class="navbar-brand text-white" href="#">PCR Test Simulator</h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown ">
+                        <a v-if="locale === 'de'" class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sprache
+        </a>
+                        <a v-else class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Language
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown" v-model="$i18n.locale">
-          <a class="dropdown-item" v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang">{{ lang }}</a>
-        </div>
-      </li>
-    </ul>
-  </div> -->
+                        <div class="dropdown-menu dropdown-menu-right" style="min-width: 1rem;" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" v-for="lang in languages" @click="locale = lang"><img v-if="lang === 'de'" src="./src/locales/de.svg" width="40" height="30">
+                                <img v-else src="./src/locales/en.svg" width="40" height="30"></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </nav>
-
-        <pcr-comp></pcr-comp>
+        <test1></test1>
+        <!-- <pcr-comp locale={{locale}}></pcr-comp> -->
+        <component v-bind:is="currentComponent" :arg=testdata></component>
     </div>
 
     <!-- Footer -->
@@ -58,8 +63,9 @@
 
     <script>
     </script>
-    <script src="src/pcr-calculator.js"></script>
     <script src="src/i18n.js"></script>
+    <script src="src/pcr-calculator.js"></script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
