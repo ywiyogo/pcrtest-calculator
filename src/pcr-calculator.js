@@ -25,10 +25,10 @@ const app = Vue.createApp({
 app.component('pcr-de', {
     data() {
         return {
-            total_samples: 10000,
-            infectionsrate_percent: 2,
-            sensitivity_percent: 98,
-            specificity_percent: 98,
+            total_samples: '10000',
+            infectionsrate_percent: '2',
+            sensitivity_percent: '98,0',
+            specificity_percent: '98,0',
             real_positive: 0,
             real_negative: 0,
             test_positive: 0,
@@ -45,9 +45,9 @@ app.component('pcr-de', {
     },
     methods: {
         calc_all() {
-            this.real_negative = this.total_samples - this.real_positive;
-            this.test_positive = Number(this.sensitivity_percent) / 100 * Number(this.real_positive);
-            this.test_negative = Number(this.specificity_percent) / 100 * Number(this.real_negative);
+            this.real_negative = this.total_samples.replace(',', '.') - this.real_positive;
+            this.test_positive = Number(this.sensitivity_percent.replace(',', '.')) / 100 * Number(this.real_positive);
+            this.test_negative = Number(this.specificity_percent.replace(',', '.')) / 100 * Number(this.real_negative);
             this.test_falsenegative = Number(this.real_positive) - Number(this.test_positive);
             this.test_falsepositive = Number(this.real_negative) - Number(this.test_negative);
             this.total_testpositive = this.test_positive + this.test_falsepositive;
@@ -68,27 +68,27 @@ app.component('pcr-de', {
     },
     watch: {
         total_samples: function(val) {
-            this.real_positive = val * this.infectionsrate_percent / 100;
+            this.real_positive = val * Number(this.infectionsrate_percent.replace(',', '.')) / 100;
             this.calc_all();
 
         },
         infectionsrate_percent: function(val) {
-            this.real_positive = val / 100 * this.total_samples;
+            this.real_positive = Number(val.replace(',', '.')) / 100 * this.total_samples;
             this.calc_all();
         },
         sensitivity_percent: function(val) {
-            this.test_positive = val / 100 * Number(this.real_positive);
+            this.test_positive = Number(val.replace(',', '.')) / 100 * Number(this.real_positive);
             this.test_falsenegative = Number(this.real_positive) - Number(this.test_positive);
             this.calc_test();
         },
         specificity_percent: function(val) {
-            this.test_negative = val / 100 * Number(this.real_negative);
+            this.test_negative = Number(val.replace(',', '.')) / 100 * Number(this.real_negative);
             this.test_falsepositive = Number(this.real_negative) - Number(this.test_negative);
             this.calc_test();
         },
     },
     created: function() {
-        this.real_positive = this.total_samples * this.infectionsrate_percent / 100;
+        this.real_positive = this.total_samples * Number(this.infectionsrate_percent.replace(',', '.')) / 100;
         this.calc_all();
     },
     template: `<div  class="jumbotron">
@@ -194,17 +194,22 @@ app.component('pcr-de', {
                 </div>
             </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title">Anmerkung</h5>
-            <ul class="card-text">
-                <li>Die Zuverlässigkeit des PCR-Tests hängt stark von den drei Faktoren ab (der Empfindlichkeit, der Spezifität des Testgeräts und der Infektionsrate / -prävalenz in der getesteten Region).</li>
-                <li>Um die Infektionsrate (Prävalenz) zu bestimmen, müssen wir die Anzahl der gemeldeten kranken Patienten kennen.</li>
-                <li>100% der Empfindlichkeit bedeutet, dass das positive Testergebnis 100% des realen Positivs darstellt. Die Anzahl der Zyklen des Testparameters ändert die Empfindlichkeit.</li>
-                <li>100% der Spezifität bedeutet, dass das negative Testergebnis 100% des realen Negativs darstellt.</li>
-                <li><a href="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values">PV und NV</a> repräsentieren die Zuverlässigkeit des Testergebnisses. Je höher der Vorhersagewert ist, desto zuverlässiger ist das Ergebnis.</li>
-                <li>Die mathematische Berechnung heißt Bayes-Theorem, mehr zum Vertiefen: <a href="https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Probability/BS704_Probability6.html">"https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Probability/BS704_Probability6.html"</a></li>
-                <li>Videoquelle von dem Livestream mit Prof. Dr. Dr. Martin Haditsch:<a href="https://youtu.be/RFzBG_XMn_E?t=664">https://youtu.be/RFzBG_XMn_E?t=664</a></li>
-            </ul>
+        <div class="card-group">
+            <div class="card">
+            <img src="assets/pcr-for-dummies.jpg" class="img-fluid" alt="Responsive image">
+            <div class="card-body">
+                <h5 class="card-title">Anmerkung</h5>
+                <ul class="card-text">
+                    <li>Die Zuverlässigkeit des PCR-Tests hängt stark von den drei Faktoren ab (nämlich von der Sensitivität/Empfindlichkeit des Testgeräts, der Spezifität der Testdatenbank und der Infektionsrate / -prävalenz in der getesteten Region).</li>
+                    <li>Um die Infektionsrate (Prävalenz) zu bestimmen, müssen wir die Anzahl der gemeldeten kranken Patienten kennen.</li>
+                    <li>100% der Empfindlichkeit bedeutet, dass das positive Testergebnis 100% des realen Positivs darstellt. Die Anzahl der Zyklen des Testparameters ändert die Empfindlichkeit.</li>
+                    <li>100% der Spezifität bedeutet, dass das negative Testergebnis 100% des realen Negativs darstellt.</li>
+                    <li><a href="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values">PV und NV</a> repräsentieren die Zuverlässigkeit des Testergebnisses. Je höher der Vorhersagewert ist, desto zuverlässiger ist das Ergebnis.</li>
+                    <li>Die mathematische Berechnung heißt Bayes-Theorem, mehr zum Vertiefen: <a href="https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Probability/BS704_Probability6.html">"https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Probability/BS704_Probability6.html"</a></li>
+                    <li>Videoquelle von dem Livestream mit Prof. Dr. Dr. Martin Haditsch:<a href="https://youtu.be/RFzBG_XMn_E?t=664">https://youtu.be/RFzBG_XMn_E?t=664</a></li>
+                </ul>
+            </div>
+            </div>
         </div>
     </div>`
 })
@@ -213,9 +218,9 @@ app.component('pcr-en', {
     data() {
         return {
             total_samples: 10000,
-            infectionsrate_percent: 2,
-            sensitivity_percent: 98,
-            specificity_percent: 98,
+            infectionsrate_percent: '2.0',
+            sensitivity_percent: '98.0',
+            specificity_percent: '98.0',
             real_positive: 0,
             real_negative: 0,
             test_positive: 0,
@@ -233,8 +238,8 @@ app.component('pcr-en', {
     methods: {
         calc_all() {
             this.real_negative = this.total_samples - this.real_positive;
-            this.test_positive = Number(this.sensitivity_percent) / 100 * Number(this.real_positive);
-            this.test_negative = Number(this.specificity_percent) / 100 * Number(this.real_negative);
+            this.test_positive = Number(this.sensitivity_percent.replace(',', '.')) / 100 * Number(this.real_positive);
+            this.test_negative = Number(this.specificity_percent.replace(',', '.')) / 100 * Number(this.real_negative);
             this.test_falsenegative = Number(this.real_positive) - Number(this.test_positive);
             this.test_falsepositive = Number(this.real_negative) - Number(this.test_negative);
             this.total_testpositive = this.test_positive + this.test_falsepositive;
@@ -260,22 +265,22 @@ app.component('pcr-en', {
 
         },
         infectionsrate_percent: function(val) {
-            this.real_positive = val / 100 * this.total_samples;
+            this.real_positive = Number(val.replace(',', '.')) / 100 * this.total_samples;
             this.calc_all();
         },
         sensitivity_percent: function(val) {
-            this.test_positive = val / 100 * Number(this.real_positive);
+            this.test_positive = val.replace(',', '.') / 100 * Number(this.real_positive);
             this.test_falsenegative = Number(this.real_positive) - Number(this.test_positive);
             this.calc_test();
         },
         specificity_percent: function(val) {
-            this.test_negative = val / 100 * Number(this.real_negative);
+            this.test_negative = val.replace(',', '.') / 100 * Number(this.real_negative);
             this.test_falsepositive = Number(this.real_negative) - Number(this.test_negative);
             this.calc_test();
         },
     },
     created: function() {
-        this.real_positive = this.total_samples * this.infectionsrate_percent / 100;
+        this.real_positive = this.total_samples * Number(this.infectionsrate_percent.replace(',', '.')) / 100;
         this.calc_all();
     },
     template: `
