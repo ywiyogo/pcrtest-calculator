@@ -92,7 +92,7 @@ app.component('pcr-de', {
         this.calc_all();
     },
     template: `<div  class="jumbotron">
-        <h2 class='text-center' href='#pcr'>PCR-Testergebnisse in der Epidemiologie</h2>
+        <h2 class='text-center' href='#pcr'>PCR-Test in der Epidemiologie</h2>
     </div>
 
     <div class='container'>
@@ -122,13 +122,13 @@ app.component('pcr-de', {
                         <th  scope='col'>Test Specs</th>
                         <th scope='col'></th>
                         <th  scope='col'>Proben</th>
-                        <th  scope='col'>+ Testergebnisse</th>
-                        <th scope='col'>- Testergebnisse</th>
+                        <th  scope='col'>+ Testergebnis</th>
+                        <th scope='col'>- Testergebnis</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th  scope='row' class='col-md-3'>Sensitivität  <input type='text' style="width:50px; padding: 0 2px;" v-model='sensitivity_percent'> %</th>
+                        <th  scope='row' class='col-md-3'>Sensitivität  <input type='text' style="width:60px; padding: 0 2px;" v-model='sensitivity_percent'> %</th>
                         <th  class='col-md-1'>Echte +</th>
 
                         <td class='col-md-2'>{{real_positive}}</td>
@@ -136,7 +136,7 @@ app.component('pcr-de', {
                         <td class="text-danger col-md-2">{{test_falsenegative}}</td>
                     </tr>
                     <tr>
-                        <th  scope='row' class='col-md-3'>Spezifität <input type='text' style="width:50px;padding: 0 2px;" v-model='specificity_percent'> %</th>
+                        <th  scope='row' class='col-md-3'>Spezifität <input type='text' style="width:60px;padding: 0 2px;" v-model='specificity_percent'> %</th>
                         <th class='col-md-1'>Echte -</th>
                         <td class='col-md-2'>{{real_negative}}</td>
                         <td class="text-danger col-md-2">{{test_falsepositive}}</td>
@@ -295,7 +295,7 @@ app.component('pcr-en', {
     },
     template: `
     <div class="jumbotron">
-        <h2 class='text-center' href='#pcr'>Understanding the PCR Test Results in Epidemiology</h2>
+        <h2 class='text-center' href='#pcr'>Understanding the PCR Test in the Epidemiology</h2>
     </div>
     <div class='container'>
         <div class='row'>
@@ -328,14 +328,14 @@ app.component('pcr-en', {
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope='row' class='col-md-3'>Sensitivity <input type='text' style="width:50px; padding: 0 2px;" v-model='sensitivity_percent'> %</th>
+                        <th scope='row' class='col-md-3'>Sensitivity <input type='text' style="width:60px; padding: 0 2px;" v-model='sensitivity_percent'> %</th>
                         <th class='col-md-1'>Real +</th>
                         <td class='col-md-2'>{{real_positive}}</td>
                         <td class="text-success col-md-2">{{test_positive}} </td>
                         <td class="text-danger col-md-2">{{test_falsenegative}}</td>
                     </tr>
                     <tr>
-                        <th scope='row' class='col-md-3'>Specificity <input type='text' style="width:50px;padding: 0 2px;" v-model='specificity_percent'> %</th>
+                        <th scope='row' class='col-md-3'>Specificity <input type='text' style="width:60px;padding: 0 2px;" v-model='specificity_percent'> %</th>
                         <th class='col-md-1'>Real -</th>
                         <td class='col-md-2'>{{real_negative}}</td>
                         <td class="text-danger col-md-2">{{test_falsepositive}}</td>
