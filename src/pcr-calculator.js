@@ -13,11 +13,6 @@ const app = Vue.createApp({
             return 'pcr-' + this.locale.toLowerCase()
         }
     },
-    methods: {
-        getImgUrl(lang) {
-            return require('./src/locales/' + lang + ".svg")
-        }
-    }
 
 })
 
@@ -199,15 +194,20 @@ app.component('pcr-de', {
             <div class="card-body">
                 <h5 class="card-title">Anmerkung</h5>
                 <ul class="card-text">
-                    <li>Die Zuverlässigkeit des PCR-Tests hängt stark von den drei Faktoren ab (nämlich von der Sensitivität/Empfindlichkeit des Testgeräts, der Spezifität der Testdatenbank und der Infektionsrate / -prävalenz in der getesteten Region).</li>
+                    <li>Die Zuverlässigkeit eines medizinischen Tests (inkl. PCR-Test) hängt stark von den drei Faktoren ab (nämlich von der Sensitivität/Empfindlichkeit des Testgeräts, der Spezifität der Testdatenbank und der Infektionsrate / -prävalenz in der getesteten Region).</li>
                     <li>Um die Infektionsrate (Prävalenz) zu bestimmen, müssen wir die Anzahl der gemeldeten kranken Patienten kennen.</li>
                     <li>100% der Empfindlichkeit bedeutet, dass das positive Testergebnis 100% des realen Positivs darstellt. Die Anzahl der Zyklen des Testparameters ändert die Empfindlichkeit.</li>
                     <li>100% der Spezifität bedeutet, dass das negative Testergebnis 100% des realen Negativs darstellt.</li>
-                    <li><a href="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values">PV und NV</a> repräsentieren die Zuverlässigkeit des Testergebnisses. Je höher der Vorhersagewert ist, desto zuverlässiger ist das Ergebnis.</li>
+                    <li><a href="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values">PV und NV</a> repräsentieren die Zuverlässigkeit des Testergebnisses im Bezug auf die Prädiktion. Je höher der Vorhersagewert ist, desto zuverlässiger ist das Ergebnis.</li>
                     <li>Die mathematische Berechnung heißt Bayes-Theorem, mehr zum Vertiefen: <a href="https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Probability/BS704_Probability6.html">"https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Probability/BS704_Probability6.html"</a></li>
-                    <li>Videoquelle von dem Livestream mit Prof. Dr. Dr. Martin Haditsch:<a href="https://youtu.be/RFzBG_XMn_E?t=664">https://youtu.be/RFzBG_XMn_E?t=664</a></li>
                 </ul>
             </div>
+            <div class="card-body">
+                <h5 class="card-title">References</h5>
+                <ul class="card-text">
+                <li>Videoquelle von dem Livestream mit Prof. Dr. Dr. Martin Haditsch: <br> <iframe id="lbry-iframe" width="560" height="315" src="https://lbry.tv/$/embed/narrative-3-livestream-mit-prof-dr-dr/c860a5a37e4c55ff92035534dbd2f8ac9427ca8e?t=670&r=BqeZFxH4ycNKMfGeMCoYaoEvNjUQvXdw" allowfullscreen></iframe></li>
+                <li>Die tiefe mathematische Erklärung von 3Blue1Brown: <br> <iframe width="560" height="315" src="https://www.youtube.com/embed/lG4VkPoG3ko" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -396,13 +396,20 @@ app.component('pcr-en', {
         <div class="card-body">
             <h5 class="card-title">Notes</h5>
             <ul class="card-text">
-                <li>The reliability of the PCR test depends strongly on the 3 factors (the sensitivity, the specificity of the test device, and the infection rate/prevalence in the tested region).</li>
+                <li>The reliability of a medical test (incl. PCR test) depends strongly on the 3 factors (the sensitivity, the specificity of the test device, and the infection rate/prevalence in the tested region).</li>
                 <li>In order to determine the infection rate (prevalence), we have to know the number of the reported sick patients.</li>
                 <li>100% of sensitivity means that the positive test result represents 100% the real positive. The number of cycles of the test parameter changes the sensitivity.</li>
                 <li>100% of specificity means that the negative test result represents 100% the real negative.</li>
-                <li><a href="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values">PPV and NPV</a> represent the reliability of the test result. The higher the predictive value, the more reliable is the result.</li>
+                <li><a href="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values">PPV and NPV</a> represent the reliability of the test result in respect to the prediction. The higher the predictive value, the more reliable is the result.</li>
                 <li>The mathematical calculation is called the Bayes's Theorem, see this article for more details: <a href="https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Probability/BS704_Probability6.html">https://sphweb.bumc.bu.edu/otlt/MPH-Modules/BS/BS704_Probability/BS704_Probability6.html</a></li>
-                <li>Video source Livestream with Prof. Dr. Dr. Martin Haditsch: <a href="https://youtu.be/RFzBG_XMn_E?t=664">https://youtu.be/RFzBG_XMn_E?t=664</a></li>
+                
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">References</h5>
+            <ul class="card-text">
+            <li>Video source Livestream with Prof. Dr. Dr. Martin Haditsch: <br> <iframe id="lbry-iframe" width="560" height="315" src="https://lbry.tv/$/embed/narrative-3-livestream-mit-prof-dr-dr/c860a5a37e4c55ff92035534dbd2f8ac9427ca8e?t=670&r=BqeZFxH4ycNKMfGeMCoYaoEvNjUQvXdw" allowfullscreen></iframe></li>
+            <li>Deep mathematical explaination from  3Blue1Brown <br> <iframe width="560" height="315" src="https://www.youtube.com/embed/lG4VkPoG3ko" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </li>
             </ul>
         </div>
     </div>
