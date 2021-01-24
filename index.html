@@ -9,12 +9,17 @@
         content="A calculator or simulator for understanding the PCR test based on the Bayes' theorem in the epidemiology.">
     <meta name="keywords" content="PCR test, Bayes' theorem, Covid-19 test, False Positive covid test">
     <meta name="author" content="Yongkie Wiyogo">
+    <meta property="og:title" content="A simple medical test calculator"/>
+    <meta property="og:url" content="https://ywiyogo.github.io/pcrtest-calculator/" />
+    <meta property="og:description" content="A calculator for understanding the PCR test based on the Bayes' theorem in the epidemiology.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/ywiyogo/pcrtest-calculator/master/assets/preview_header.png">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- <script type = "text/javascript" src = "js/vue.js"></script> -->
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
@@ -47,6 +52,15 @@
                                 <p v-else width="40" height="30">English</p>
                             </a>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a v-if="locale === 'de'" class="nav-link active text-white" href="https://github.com/ywiyogo/pcrtest-calculator"
+                            aria-haspopup="true"
+                            aria-expanded="false">Quellcode <i class="bi bi-github"></i>
+                        </a>
+                        <a v-else class="nav-link active text-white" href="https://github.com/ywiyogo/pcrtest-calculator"
+                            aria-haspopup="true" aria-expanded="false">Source code <i class="bi bi-github"></i>
+                        </a>
                     </li>
                 </ul>
             </div>

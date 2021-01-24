@@ -217,7 +217,7 @@ app.component('pcr-de', {
             <p class="card-text">Wenn Sie meine Arbeit schätzen, können Sie mir helfen, indem Sie zum Code/Datensatz beitragen oder auf Paypal spenden. <a class="btn btn-primary" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8SHK9SX96PQU&source=url" rel="nofollow"
                     target="_blank">Spenden</a></p>
 
-            <p class="card-text">Bitte schreiben Sie Ihre Korrektur oder Vorschläge direkt auf dem Github-Plattform: <a class="btn btn-primary" href="https://github.com/ywiyogo/covid-graphs/issues" target="_blank">Korrektur melden</a></p>
+            <p class="card-text">Bitte schreiben Sie Ihre Korrektur oder Vorschläge direkt auf dem Github-Plattform: <a class="btn btn-primary" href="https://github.com/ywiyogo/pcrtest-calculator/issues" target="_blank">Korrektur melden</a></p>
             <p class="card-text">&#169; Yongkie Wiyogo</p>
             <br>
         </div>
@@ -421,7 +421,7 @@ app.component('pcr-en', {
             <p class="card-text">If you appreciate my work, you can help by contributing to the code or doing a donation on Paypal. <a class="btn btn-primary" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8SHK9SX96PQU&source=url" rel="nofollow"
                     target="_blank">Support</a></p>
 
-            <p class="card-text">Please write any suggestions or issues directly on Github: <a class="btn btn-primary" href="https://github.com/ywiyogo/covid-graphs/issues" target="_blank">Report issues</a></p>
+            <p class="card-text">Please write any suggestions or issues directly on Github: <a class="btn btn-primary" href="https://github.com/ywiyogo/pcrtest-calculator/issues" target="_blank">Report issues</a></p>
             <p class="card-text">&#169; Yongkie Wiyogo</p>
             <br>
         </div>
